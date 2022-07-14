@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Unsplash-PenguinIN</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_label">Search</string>
+    <string name="result_label">Search Result</string>
+    <string name="enter_keyword">Enter keyword</string>
 </resources>
