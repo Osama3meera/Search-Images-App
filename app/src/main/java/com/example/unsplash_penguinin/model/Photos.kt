@@ -1,3 +1,3 @@
 package com.example.unsplash_penguinin.model
 
-data class Photos(var results: Results)
+data class Photos(var results: ArrayList<Results>)

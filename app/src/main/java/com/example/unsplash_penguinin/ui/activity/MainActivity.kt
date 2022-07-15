@@ -1,4 +1,4 @@
-package com.example.unsplash_penguinin.ui
+package com.example.unsplash_penguinin.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,4 +21,5 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         setupActionBarWithNavController(navController)
     }
+
 }

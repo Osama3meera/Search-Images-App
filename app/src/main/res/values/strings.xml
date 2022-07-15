@@ -5,4 +5,5 @@
     <string name="search_label">Search</string>
     <string name="result_label">Search Result</string>
     <string name="enter_keyword">Enter keyword</string>
+    <string name="description">description</string>
 </resources>

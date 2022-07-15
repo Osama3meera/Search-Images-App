@@ -1,11 +1,15 @@
-package com.example.unsplash_penguinin.ui
+package com.example.unsplash_penguinin.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.unsplash_penguinin.databinding.FragmentSearchBinding
+import com.example.unsplash_penguinin.vm.DataViewModel
 
 class SearchFragment : Fragment() {
 
@@ -14,7 +18,7 @@ class SearchFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentSearchBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -23,8 +27,13 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.searchBtn.setOnClickListener {
+        val vm = ViewModelProvider(this)[DataViewModel::class.java]
 
+        binding.searchBtn.setOnClickListener {
+            vm.search(requireActivity(), binding.searchEt.text.toString())
+            val action =
+                SearchFragmentDirections.actionSearchFragmentToResultFragment(binding.searchEt.text.toString())
+            findNavController().navigate(action)
         }
     }
 }

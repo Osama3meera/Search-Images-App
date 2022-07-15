@@ -1,0 +1,32 @@
+package com.example.unsplash_penguinin.data.retrofit
+
+
+import com.example.unsplash_penguinin.data.AppConstants
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
+
+class RestClient {
+    companion object {
+        private val okHttpClient = OkHttpClient.Builder()
+                .readTimeout(40, TimeUnit.SECONDS)
+                .connectTimeout(40, TimeUnit.SECONDS)
+                .addInterceptor(HttpLoggingInterceptor().apply {
+                    level = HttpLoggingInterceptor.Level.BODY
+                })
+                .retryOnConnectionFailure(false)
+                .build()
+
+        fun getService(): AppApi {
+            val retrofit = Retrofit.Builder()
+                    .baseUrl(AppConstants.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(okHttpClient)
+                    .build()
+
+            return retrofit.create<AppApi>(AppApi::class.java)
+        }
+    }
+}

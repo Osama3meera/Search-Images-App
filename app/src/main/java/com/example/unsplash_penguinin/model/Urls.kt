@@ -1,3 +1,8 @@
 package com.example.unsplash_penguinin.model
 
-data class Urls (var thumb:String)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+
+@Parcelize
+data class Urls(var thumb: String) : Parcelable
