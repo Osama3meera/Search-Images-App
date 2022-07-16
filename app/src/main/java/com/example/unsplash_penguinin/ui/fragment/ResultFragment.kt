@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.unsplash_penguinin.R
 import com.example.unsplash_penguinin.databinding.FragmentResultBinding
 import com.example.unsplash_penguinin.ui.adapter.PhotosAdapter
 import com.example.unsplash_penguinin.vm.DataViewModel
@@ -47,8 +50,13 @@ class ResultFragment : Fragment() {
             }
         })
 
+        onBackPressed()
         return binding.root
     }
 
-
+    private fun onBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            findNavController().navigate(R.id.action_resultFragment_to_searchFragment)
+        }
+    }
 }
