@@ -2,7 +2,6 @@ package com.example.unsplash_penguinin.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -28,16 +27,6 @@ class MainActivity : AppCompatActivity() {
         // This vm is to initialize one view model object for both fragment, fragment will requireActivity to reach to this object
         val vm = ViewModelProvider(this)[DataViewModel::class.java]
 
-        onBackPressedDispatcher.addCallback(
-            this,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    onBackPressed()
-                    // if you want onBackPressed() to be called as normal afterwards
-
-                }
-            }
-        )
     }
 
     override fun onSupportNavigateUp(): Boolean {
