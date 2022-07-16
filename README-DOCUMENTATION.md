@@ -1,4 +1,4 @@
-# Unsplash-Project
+# Unsplash-PenguinIN project
 
 Hello PenguinIN team, 
 
@@ -44,3 +44,4 @@ Let's Start,
 - Smooth list scrolling
 - Pretty list item layout is built
 - User can go back easily using the back arrow above or hardware back button
+- Edit text will be cleared when user go back the search screen
