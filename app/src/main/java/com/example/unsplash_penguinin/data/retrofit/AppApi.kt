@@ -11,6 +11,8 @@ interface AppApi {
     fun search(
         @Query("client_id") clientID: String,
         @Query("query") searchQuery: String,
+        @Query("page") page: String,
+        @Query("per_page") per_page: String,
     ): Call<Photos>
 
 }

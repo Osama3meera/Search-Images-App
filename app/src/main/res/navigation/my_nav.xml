@@ -17,8 +17,7 @@
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.example.unsplash_penguinin.ui.fragment.ResultFragment"
-        android:label="@string/result_label"
-        tools:layout="@layout/fragment_result" >
+        tools:layout="@layout/fragment_result">
         <argument
             android:name="searchQuery"
             app:argType="string" />

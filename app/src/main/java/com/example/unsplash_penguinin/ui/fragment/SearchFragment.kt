@@ -27,13 +27,22 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val vm = ViewModelProvider(this)[DataViewModel::class.java]
+        val vm = ViewModelProvider(requireActivity())[DataViewModel::class.java]
 
         binding.searchBtn.setOnClickListener {
-            vm.search(requireActivity(), binding.searchEt.text.toString())
-            val action =
-                SearchFragmentDirections.actionSearchFragmentToResultFragment(binding.searchEt.text.toString())
-            findNavController().navigate(action)
+            if (binding.searchEt.text.toString() != ""){
+                vm.search(requireActivity(), binding.searchEt.text.toString())
+                val action =
+                    SearchFragmentDirections.actionSearchFragmentToResultFragment(binding.searchEt.text.toString())
+                findNavController().navigate(action)
+            }else{
+                Toast.makeText(requireActivity(),"You must enter a keyword",Toast.LENGTH_SHORT).show()
+            }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.searchEt.text.clear()
     }
 }

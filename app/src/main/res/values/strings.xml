@@ -6,4 +6,5 @@
     <string name="result_label">Search Result</string>
     <string name="enter_keyword">Enter keyword</string>
     <string name="description">description</string>
+    <string name="placeholder_link"><![CDATA[https://media.istockphoto.com/vectors/image-place-holder-with-a-gray-camera-icon-vector-id1226328537?k=20&m=1226328537&s=612x612&w=0&h=2klft8QdMSyDj3oAmFyRyD24Mogj2OygLWrX9Lk6oGQ=]]></string>
 </resources>

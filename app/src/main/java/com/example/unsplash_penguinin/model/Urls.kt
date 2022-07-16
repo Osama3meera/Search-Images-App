@@ -5,4 +5,4 @@ import kotlinx.android.parcel.Parcelize
 
 
 @Parcelize
-data class Urls(var thumb: String) : Parcelable
+data class Urls(var thumb: String,var small:String) : Parcelable

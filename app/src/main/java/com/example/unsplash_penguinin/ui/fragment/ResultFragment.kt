@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -28,23 +29,26 @@ class ResultFragment : Fragment() {
         val args: ResultFragmentArgs by navArgs()
         val searchQuery = args.searchQuery
 
-        binding.resultEt.setText(searchQuery)
-        binding.resultEt.isClickable = false
+        (activity as AppCompatActivity).supportActionBar?.title = searchQuery
+
+        val vm = ViewModelProvider(requireActivity())[DataViewModel::class.java]
+
+        vm.result.observe(requireActivity(), Observer {
+            if (vm.result.value!!.size > 0) {
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.noResultsImageView.visibility = View.GONE
+                binding.recyclerView.layoutManager =
+                    LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+                val adapter = PhotosAdapter(requireActivity(), it)
+                binding.recyclerView.adapter = adapter
+            } else {
+                binding.recyclerView.visibility = View.GONE
+                binding.noResultsImageView.visibility = View.VISIBLE
+            }
+        })
 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val vm = ViewModelProvider(this)[DataViewModel::class.java]
-
-        vm.result.observe(requireActivity(), Observer {
-            binding.recyclerView.layoutManager =
-                LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-            val adapter = PhotosAdapter(requireActivity(), it)
-            binding.recyclerView.adapter = adapter
-        })
-    }
 
 }
