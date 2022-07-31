@@ -1,7 +1,5 @@
 # Unsplash-PenguinIN project
 
-Hello PenguinIN team, 
-
 this is the Documentation of the project Development.
 
 Let's Start, 
