@@ -1,4 +1,4 @@
-# Unsplash-PenguinIN project
+# Searching Images App
 
 this is the Documentation of the project Development.
 
